@@ -5,22 +5,19 @@ This is a repository template containing all the information that needs to accom
 
 Feel free to use any languages or frameworks, but the following information must be filled out before hacking ends.
 ___________
-# Project Name
+# GlideGuide
 
 ## Challenge Statement(s) Addressed 🎯
 **...include the challenge statement(s) the project worked to address**
-
-Examples:
-* How might we decrease the United States chances of alien and monster attacks given what we know from popular alien and monster movies?
-* How might we make it possible for people in cities not to have to own a car by making car-sharing easier so that the environment will be less damaged and people can save money?
-* How might we ....
+* How can we enhance the travelers experience during their journey to and while waiting at the airport?
 
 ## Project Description 🤯
 **....at lease 3 sentences describing what the project does and how it works**
+* Imagine an app that tells you how busy the airport is right now. It then determines when you should get there based on how long you're willing to wait and what you like. It also suggests places to eat, shop, or relax at the airport.
 
 ## Project Value 💰
 **....at lease 3 sentences describing your target customer and tangible benefits from your solution**
-
+* The app is designed for all types of travelers, both occasional and seasoned. It offers concrete advantages, such as reducing the anxiety linked to airport navigation, optimizing travel time, making the most of wait times, personalizing the experience to meet individual preferences, ultimately enhancing the overall travel experience, and boosting traveler satisfaction, resulting in more positive airport experiences.
 
 ## Tech Overview 💻
 **... what tech was used to bring this project to life?**
@@ -33,15 +30,17 @@ Example:
 
 ### ✨ Contributors ✨
 **...tell the world who you and your team are 🙂**
-* Team member X (AAdvantage No)
-* Team member Y (AAdvantage No)
-* Team member Z (AAdvantage No)
+* Tianna Alvarez (D10B78)
+* Brandon Brown (X1KL976)
+* Kori McMorris (N4EL978)
+* Daunte Bethel (U7CL970)
+* David Adetuberu (C9XB232)
 
 ### School Name 🏫
-The ABC School
+Benedict College
 
 ### Team Name 🏷
-Coding Costars
+Cyber Tigers
 
 ### Link to Video Pitch 📹
 **...point us to where you tell us about your solution 😄**
@@ -50,12 +49,12 @@ Coding Costars
 **...point us to your PPT or Canva slides 😍**
 
 ### Team Checklist due before 5p Saturday 11/4 ✅
-- [ ] Team photo
-- [ ] Team Slack channel
-- [ ] Communication established with mentor
-- [ ] Repo creation from this template
-- [ ] Hangar registration
-- [ ] Scavenger Hunt submission
+- [X] Team photo
+- [X] Team Slack channel
+- [X] Communication established with mentor
+- [X] Repo creation from this template
+- [X] Hangar registration
+- [X] Scavenger Hunt submission
 
 ### Project Checklist due before 10a Sunday 11/5 🏁
 - [ ] Presentation complete and linked
