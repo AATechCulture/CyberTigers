@@ -8,15 +8,12 @@ ___________
 # GlideGuide
 
 ## Challenge Statement(s) Addressed 🎯
-**...include the challenge statement(s) the project worked to address**
 * How can we enhance the travelers experience during their journey to and while waiting at the airport?
 
 ## Project Description 🤯
-**....at lease 3 sentences describing what the project does and how it works**
 * Imagine an app that tells you how busy the airport is right now. It then determines when you should get there based on how long you're willing to wait and what you like. It also suggests places to eat, shop, or relax at the airport.
 
 ## Project Value 💰
-**....at lease 3 sentences describing your target customer and tangible benefits from your solution**
 * The app is designed for all types of travelers, both occasional and seasoned. It offers concrete advantages, such as reducing the anxiety linked to airport navigation, optimizing travel time, making the most of wait times, personalizing the experience to meet individual preferences, ultimately enhancing the overall travel experience, and boosting traveler satisfaction, resulting in more positive airport experiences.
 
 ## Tech Overview 💻
