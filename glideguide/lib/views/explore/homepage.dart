@@ -1,107 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:glideguide/views/explore/optionspage.dart';
+import 'package:glideguide/views/forecast/forcast_page.dart';
+import 'package:glideguide/views/forecast/widgets/information.dart';
 
+/// HomePage provides the structure for the main screen of the app
+/// with navigation through a BottomNavigationBar.
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0; // Holds the current tab index
+  late String query = ""; // Holds the current search query
 
-  final TextEditingController _airportcontroller = TextEditingController();
-  final TextEditingController _flightcodecontroller = TextEditingController();
-
-  void _navigateToResults(BuildContext context) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => OptionsPage(searchQuery: _airportcontroller.text),
-      ),
-    );
+  /// Generates the list of widgets for the bottom tabs
+  List<Widget> _widgetOptions() {
+    return <Widget>[
+      OptionsPage(searchQuery: query), // Explore tab content
+      const ForecastPage(), // Forecast tab content
+      const Information(), // Locate tab content
+      // Additional tabs go here
+    ];
   }
 
+  /// Updates the tab selection
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Glide Guide',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
+        title: const Text('Glide Guide'),
+        // AppBar styling if needed
+      ),
+      body: Center(
+        // Uses the method to get the current tab's content
+        child: _widgetOptions().elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Explore',
           ),
-        ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.gps_fixed),
+            label: 'Forecast',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: 'Information',
+          ),
+          // Additional items for tabs go here
+        ],
+        currentIndex: _selectedIndex, // Current tab index
+        selectedItemColor:
+            Colors.amber[800], // Highlight color for selected tab
+        onTap: _onItemTapped, // Method called on tapping a tab
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Text(
-                'Find and Explore Airports',
-                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                controller: _airportcontroller,
-                decoration: const InputDecoration(
-                  labelText: 'Enter an airport name or airport code',
-                  border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.search),
-                ),
-                onSubmitted: (String value) {
-                  _navigateToResults(context);
-                },
-              ),
-            ),
-            // _flightcodecontroller
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Text(
-                'Or use your flight code',
-                style: TextStyle(fontSize: 18.0),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextField(
-                controller: _flightcodecontroller,
-                decoration: const InputDecoration(
-                  labelText: 'flight code',
-                  border: OutlineInputBorder(),
-                ),
-                onSubmitted: (String value) {
-                  _navigateToResults(context);
-                },
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () => _navigateToResults(context),
-              child: const Text('Search'),
-            ),
-          ],
-        ),
-      ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Explore',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.search),
-      //       label: 'Locate',
-      //     ),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   selectedItemColor: Colors.amber[800],
-      //   onTap: _onItemTapped,
-      // ),
     );
   }
 }

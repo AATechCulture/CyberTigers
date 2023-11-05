@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "193787016498",
+    "project_id": "glideguide",
+    "storage_bucket": "glideguide.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:193787016498:android:b0cf001d0e87b6ef2d932b",
+        "android_client_info": {
+          "package_name": "com.example.glideguide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsFX3y4vJoAeOGD8KEz-1LFo__pSBXUy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
