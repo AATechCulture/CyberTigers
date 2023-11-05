@@ -1,133 +1,95 @@
+// Standard Flutter material design library import.
 import 'package:flutter/material.dart';
+// Import custom assets, typically image paths, icons, etc.
+import 'package:glideguide/assest/assest.dart';
+// Import the MapPage widget from the views/map directory.
 import 'package:glideguide/views/map/map_page.dart';
 
+// OptionsPage widget, a StatefulWidget that manages its own state.
 class OptionsPage extends StatefulWidget {
+  // The searchQuery string is passed to this widget upon creation.
   final String searchQuery;
 
+  // Constructor with key and required searchQuery parameter.
   const OptionsPage({Key? key, required this.searchQuery}) : super(key: key);
 
   @override
+  // Create state for this StatefulWidget.
   State<OptionsPage> createState() => _OptionsPageState();
 }
 
+// The state class for OptionsPage that holds the state.
 class _OptionsPageState extends State<OptionsPage> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> options = [
-      {
-        'title': 'Food and drinks',
-        'imageUrl':
-            'https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-260nw-722718097.jpg'
-      },
-      {
-        'title': 'Travel Essentials',
-        'imageUrl':
-            'https://m.media-amazon.com/images/I/71Z6Q3j9htL._SX679_.jpg'
-      },
-      {
-        'title': 'Apparel and Footwear',
-        'imageUrl':
-            'https://www.powerreviews.com/wp-content/uploads/2022/07/wardrobe-22.png'
-      },
-      {
-        'title': 'Electronics and Gadgets',
-        'imageUrl':
-            'https://www.shutterstock.com/image-photo/many-used-modern-electronic-gadgets-260nw-1457896679.jpg'
-      },
-      {
-        'title': 'Jewelry and Watches',
-        'imageUrl':
-            'https://m.media-amazon.com/images/I/71I6g3ueuWL._AC_UX679_.jpg'
-      },
-      {
-        'title': 'Health and Pharmacy Items',
-        'imageUrl':
-            'https://i.pinimg.com/originals/07/55/44/075544fd18c632ee3e90ba2b033b508c.png'
-      },
-      {
-        'title': 'Toys and Games',
-        'imageUrl':
-            'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5934/5934923_sd.jpg'
-      },
-      {
-        'title': 'Services',
-        'imageUrl': 'https://cdn-icons-png.flaticon.com/512/950/950299.png'
-      },
-    ];
-
+    // Scaffold provides the basic visual layout structure of the material design.
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Options for ${widget.searchQuery}'),
-      ),
-      body: GridView.builder(
-        padding: const EdgeInsets.all(16.0),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 10.0,
-          mainAxisSpacing: 10.0,
-        ),
-        itemCount: options.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            clipBehavior: Clip.antiAlias,
-            child: InkWell(
-              onTap: () {
-                // MapPage(options[index]['title']);
-
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => MapPage(
-                    query: options[index]['title'],
-                  ),
-                ));
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Expanded(
-                    child: Image.network(
-                      options[index]['imageUrl'],
-                      fit: BoxFit.cover,
+      // SafeArea ensures the body content is not overlapped by the system status bar or notches.
+      body: SafeArea(
+        // GridView.builder creates a grid with lazy loading of items.
+        child: GridView.builder(
+          // Sets padding for all sides of the GridView.
+          padding: const EdgeInsets.all(16.0),
+          // The grid delegate controls the layout of the grid.
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, // Number of items in a row.
+            crossAxisSpacing: 10.0, // Space between items horizontally.
+            mainAxisSpacing: 10.0, // Space between items vertically.
+          ),
+          // The number of items the grid will display.
+          itemCount: options.length,
+          // The itemBuilder creates and returns a new widget for each item in the grid.
+          itemBuilder: (BuildContext context, int index) {
+            // Card provides a material design card that can be tapped.
+            return Card(
+              // Clip behavior for the card, in this case clipping any content that overflows.
+              clipBehavior: Clip.antiAlias,
+              // InkWell provides the ripple effect on tap.
+              child: InkWell(
+                onTap: () {
+                  // Navigator is used for routing to the MapPage with a new search query.
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MapPage(
+                      query:
+                          "${options[index]['title']} near ${widget.searchQuery}",
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      options[index]['title'],
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+                  ));
+                },
+                // Column widget is used for vertical arrangement of child widgets.
+                child: Column(
+                  // Align children in a cross axis (horizontal in a column).
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  // Align children in the main axis (vertical in a column).
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    // Expanded widget allows its child to fill the available space.
+                    Expanded(
+                      // Image.network fetches and displays an image from a URL.
+                      child: Image.network(
+                        options[index]['imageUrl'],
+                        fit: BoxFit
+                            .cover, // Cover the entire space of the parent.
                       ),
                     ),
-                  ),
-                ],
+                    // Padding adds space around the text.
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      // Text widget displays the title of the option.
+                      child: Text(
+                        options[index]['title'],
+                        // Align text to the center of its container.
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold, // Make text bold.
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Explore',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Locate',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped,
+            );
+          },
+        ),
       ),
     );
   }
