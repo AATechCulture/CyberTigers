@@ -2,7 +2,7 @@
 
 ## Description 🚨 
 
-This repository houses all necessary information regarding Glide Guide. It's important to note the 'lib' folder within the glideguide directory. The code base is designed to operate across multiple operating systems
+This repository houses all necessary information regarding Glide Guide. It's important to note the 'lib' folder within the glideguide directory is mainly the lib we worked on and point of focus the rest was auto generated to render to other Operating systems. The code base is designed to operate across multiple operating systems
 ___________
 # GlideGuide
 
