@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// FirebaseCloudStorage is a singleton class that handles
@@ -29,7 +27,6 @@ class FirebaseCloudStorage {
         await airportCollection.doc('DZqL1gCHpMKd6WunWltA').get();
 
     // Log the document data for debugging purposes.
-    log(documentSnapshot.data().toString());
 
     // Return the document snapshot containing the airport data.
     return documentSnapshot;
